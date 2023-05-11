@@ -1,15 +1,21 @@
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import WhatsAppRoutes from "../../routes/WhatsAppRoutes";
 class Server {
   public app: express.Application;
 
   constructor() {
+    dotenv.config({path: "variables.env"});
+
     this.app = express();
+    this.startSetting();
+    this.activateRoute();
   }
 
   public startSetting(): void {
-    this.app.set("PORT", 3123);
+    this.app.set("PORT", process.env.PORT);
     this.app.use(cors());
     this.app.use(morgan("dev"));
     this.app.use(express.json({ limit: "1000mb" }));
@@ -17,7 +23,7 @@ class Server {
   }
 
   public activateRoute(): void {
-    this.app.use("/api/public");
+    this.app.use("/whatsapp", WhatsAppRoutes);
   }
 
   public start(): void {

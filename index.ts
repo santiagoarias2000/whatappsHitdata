@@ -1,4 +1,4 @@
-import Server from "./src/config/api/Serve";
+import Server from "./src/config/api/Server";
 
-const myServe = new Server();
-myServe.start();
+const myServer = new Server();
+myServer.start();

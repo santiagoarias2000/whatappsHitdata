@@ -1,8 +1,8 @@
-const https: any = require('https');
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const https = require('https');
 class WhatsAppService {
-    public SendMessageWhatsApp(data: string | any): void {
-
+    SendMessageWhatsApp(data) {
         const options = {
             host: "graph.facebook.com",
             path: "/v16.0/112433098501498/messages",
@@ -13,12 +13,12 @@ class WhatsAppService {
                 Authorization: "Bearer " + String(process.env.PASS_SECRET),
             },
         };
-        const req = https.request(options, (res: any) => {
-            res.on("data", (d: any) => {
+        const req = https.request(options, (res) => {
+            res.on("data", (d) => {
                 process.stdout.write(d);
             });
         });
-        req.on("error", (error: any) => {
+        req.on("error", (error) => {
             console.error(error);
         });
         req.write(data);
@@ -26,4 +26,4 @@ class WhatsAppService {
     }
 }
 const whatsAppService = new WhatsAppService();
-export default whatsAppService;
+exports.default = whatsAppService;
