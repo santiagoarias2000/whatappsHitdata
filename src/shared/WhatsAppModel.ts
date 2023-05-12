@@ -13,6 +13,32 @@ class WhatsappModels{
           return data;
     
         }
+//Buenas tardes, buenos dias, hola
+        public MessageImageHola(textResponse: any,number:number){
+            const data = JSON.stringify({
+                "messaging_product": "whatsapp",
+                "to": `whatsapp:${number}`,
+                "type": "image",
+                "image": {
+                  "link": "https://files.fm/f/u8q9ez8vy",
+                  "caption":textResponse
+                },
+              });
+              return data;
+        }
+        //Buenas noches, buenas tardes, Muchas gracias
+        public MessageImageDespedida(textResponse: any,number:number){
+            const data = JSON.stringify({
+                "messaging_product": "whatsapp",
+                "to": `whatsapp:${number}`,
+                "type": "image",
+                "image": {
+                  "link": "https://files.fm/f/4mcnm2xhk",
+                  "caption":textResponse
+                },
+              });
+              return data;
+        }
     
         public MessageList(number:number){
             const data = JSON.stringify({
@@ -23,7 +49,7 @@ class WhatsappModels{
                     "type": "list",
                     "header": {
                         "type": "text",
-                        "text": "Nuestros "
+                        "text": "Nuestros Servicios"
                     },
                     "body": {
                         "text": "Son:"
@@ -35,35 +61,67 @@ class WhatsappModels{
                         "button": "Ver opciones",
                         "sections": [
                             {
-                                "title": "Compra y vende productos",
+                                "title": "Planes de gestion de redes",
                                 "rows": [
                                     {
                                         "id": "main-comprar-header",
-                                        "title": "Comprar",
-                                        "description": "Compra los mejores productos para tu hogar"
+                                        "title": "Plan hitdata",
+                                        "description": "Valor del plan 2.000.000"
                                     },
                                     {
                                         "id": "main-comprar",
-                                        "title": "Vender",
-                                        "description": "Vende tus productos"
+                                        "title": "Plan personalizado",
+                                        "description": "Depende lo que necesita"
                                     }
                                 ]
                             },
                             {
-                                "title": "Centro de atencion",
+                                "title": "Producto de diseño",
                                 "rows": [
                                     {
                                         "id": "main-agencia",
-                                        "title": "Agencia",
-                                        "description": "Puedes visitar nuestra agencia."
+                                        "title": "Identidad coorporativa",
+                                        "description": "Creamos el logo para tu empresa"
                                     },
                                     {
                                         "id": "main-contacto",
-                                        "title": "Centro de contacto",
-                                        "description": "Te atenderá uno de nuestro agentes"
+                                        "title": "Brochure",
+                                        "description": "Creamos el catalogo para tu empresa."
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Producto de Web",
+                                "rows": [
+                                    {
+                                        "id": "main-agencia",
+                                        "title": "Pagina estatica",
+                                        "description": "Valor de una pagina estatica"
+                                    },
+                                    {
+                                        "id": "main-contacto",
+                                        "title": "Pagina WooCommers",
+                                        "description": "Valor de la pagina"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Producto de audiovisual",
+                                "rows": [
+                                    {
+                                        "id": "main-agencia",
+                                        "title": "Videos",
+                                        "description": "Valor de videos"
+                                    },
+                                    {
+                                        "id": "main-contacto",
+                                        "title": "Animaciones",
+                                        "description": "Valor de animaciones"
                                     }
                                 ]
                             }
+
+                            
                         ]
                     }
                 }
