@@ -19,20 +19,23 @@ class ProcessMessage {
         return __awaiter(this, void 0, void 0, function* () {
             textUser = textUser.toLowerCase();
             var models = [];
-            if (textUser.includes("hola")) {
+            if (textUser.includes("hola") || textUser.includes("buenos")) {
                 //Saludar
-                var model = WhatsAppModel_1.default.MessageText("Hola, un gusto saludarte", number);
+                var model = WhatsAppModel_1.default.MessageImageHola(number);
                 models.push(model);
-                var modelList = WhatsAppModel_1.default.MessageList(number);
-                models.push(modelList);
+                //
+                var model2 = WhatsAppModel_1.default.MessageList(number);
+                models.push(model2);
             }
             else if (textUser.includes("gracias")) {
                 var model = WhatsAppModel_1.default.MessageText("Con gusto :)", number);
                 models.push(model);
             }
-            else if (textUser.includes("adios") || textUser.includes("adiós")
-                || textUser.includes("bye") || textUser.includes("me voy")) {
-                var model = WhatsAppModel_1.default.MessageText("Vuelva pronto", number);
+            else if (textUser.includes("adios") ||
+                textUser.includes("adiós") ||
+                textUser.includes("bye") ||
+                textUser.includes("me voy")) {
+                var model = WhatsAppModel_1.default.MessageImageDespedida(number);
                 models.push(model);
             }
             else if (textUser.includes("vender")) {
@@ -46,6 +49,10 @@ class ProcessMessage {
             else if (textUser.includes("contacto")) {
                 var model = WhatsAppModel_1.default.MessageText("*Centro de contacto:* \n3114546376", number);
                 models.push(model);
+            }
+            else if (textUser.includes("preguntar")) {
+                var model2 = WhatsAppModel_1.default.MessageList(number);
+                models.push(model2);
             }
             else {
                 var model = WhatsAppModel_1.default.MessageText("No te entiendo", number);

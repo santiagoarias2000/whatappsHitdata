@@ -3,171 +3,167 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class WhatsappModels {
     MessageText(textResponse, number) {
         const data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "to": `whatsapp:${number}`,
-            "text": {
-                "preview_url": true,
-                "body": textResponse,
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            text: {
+                preview_url: true,
+                body: textResponse,
             },
-            "type": "text",
+            type: "text",
         });
         return data;
     }
     //Buenas tardes, buenos dias, hola
-    MessageImageHola(textResponse, number) {
+    MessageImageHola(number) {
         const data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "to": `whatsapp:${number}`,
-            "type": "image",
-            "image": {
-                "link": "https://files.fm/f/u8q9ez8vy",
-                "caption": textResponse
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            type: "image",
+            image: {
+                link: "https://hitdatasoluciones.com/images/isotipo.png",
+                caption: "Hola desde HitData",
             },
         });
         return data;
     }
     //Buenas noches, buenas tardes, Muchas gracias
-    MessageImageDespedida(textResponse, number) {
+    MessageImageDespedida(number) {
         const data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "to": `whatsapp:${number}`,
-            "type": "image",
-            "image": {
-                "link": "https://files.fm/f/4mcnm2xhk",
-                "caption": textResponse
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            type: "interactive",
+            interactive: {
+                type: "button",
+                header: {
+                    type: "image",
+                    image: {
+                        link: "https://hitdatasoluciones.com/images/isotipo.png"
+                    },
+                },
+                body: {
+                    text: "Gracias por contactarnos",
+                },
+                action: {
+                    buttons: [
+                        {
+                            type: "reply",
+                            reply: {
+                                id: "001",
+                                title: "Salir",
+                            },
+                        },
+                        {
+                            type: "reply",
+                            reply: {
+                                id: "002",
+                                title: "Preguntar",
+                            },
+                        },
+                    ],
+                },
             },
         });
         return data;
     }
     MessageList(number) {
         const data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "to": `whatsapp:${number}`,
-            "type": "interactive",
-            "interactive": {
-                "type": "list",
-                "header": {
-                    "type": "text",
-                    "text": "Nuestros Servicios"
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            type: "interactive",
+            interactive: {
+                type: "list",
+                header: {
+                    type: "text",
+                    text: "Nuestros Servicios son",
                 },
-                "body": {
-                    "text": "Son:"
+                body: {
+                    text: "Agencia de Marketing y Publicidad",
                 },
-                "footer": {
-                    "text": "Selecciona una de las opciones para poder atenderte"
+                footer: {
+                    text: "Selecciona una de las opciones para poder atenderte",
                 },
-                "action": {
-                    "button": "Ver opciones",
-                    "sections": [
+                action: {
+                    button: "Ver opciones",
+                    sections: [
                         {
-                            "title": "Planes de gestion de redes",
-                            "rows": [
+                            title: "Compra y vende productos",
+                            rows: [
                                 {
-                                    "id": "main-comprar-header",
-                                    "title": "Plan hitdata",
-                                    "description": "Valor del plan 2.000.000"
+                                    id: "main-comprar-header",
+                                    title: "Comprar",
+                                    description: "Compra los mejores productos para tu hogar",
                                 },
                                 {
-                                    "id": "main-comprar",
-                                    "title": "Plan personalizado",
-                                    "description": "Depende lo que necesita"
-                                }
-                            ]
+                                    id: "main-comprar",
+                                    title: "Vender",
+                                    description: "Vende tus productos",
+                                },
+                            ],
                         },
                         {
-                            "title": "Producto de diseño",
-                            "rows": [
+                            title: "Centro de atencion",
+                            rows: [
                                 {
-                                    "id": "main-agencia",
-                                    "title": "Identidad coorporativa",
-                                    "description": "Creamos el logo para tu empresa"
+                                    id: "main-agencia",
+                                    title: "Agencia",
+                                    description: "Puedes visitar nuestra agencia.",
                                 },
                                 {
-                                    "id": "main-contacto",
-                                    "title": "Brochure",
-                                    "description": "Creamos el catalogo para tu empresa."
-                                }
-                            ]
+                                    id: "main-contacto",
+                                    title: "Centro de contacto",
+                                    description: "Te atenderá uno de nuestro agentes",
+                                },
+                            ],
                         },
-                        {
-                            "title": "Producto de Web",
-                            "rows": [
-                                {
-                                    "id": "main-agencia",
-                                    "title": "Pagina estatica",
-                                    "description": "Valor de una pagina estatica"
-                                },
-                                {
-                                    "id": "main-contacto",
-                                    "title": "Pagina WooCommers",
-                                    "description": "Valor de la pagina"
-                                }
-                            ]
-                        },
-                        {
-                            "title": "Producto de audiovisual",
-                            "rows": [
-                                {
-                                    "id": "main-agencia",
-                                    "title": "Videos",
-                                    "description": "Valor de videos"
-                                },
-                                {
-                                    "id": "main-contacto",
-                                    "title": "Animaciones",
-                                    "description": "Valor de animaciones"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
+                    ],
+                },
+            },
         });
         return data;
     }
     MessageButtons(number) {
         const data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "to": `whatsapp:${number}`,
-            "type": "interactive",
-            "interactive": {
-                "type": "button",
-                "body": {
-                    "text": "¿Selecciona uno de los productos?"
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            type: "interactive",
+            interactive: {
+                type: "button",
+                body: {
+                    text: "¿Selecciona uno de los productos?",
                 },
-                "action": {
-                    "buttons": [
+                action: {
+                    buttons: [
                         {
-                            "type": "reply",
-                            "reply": {
-                                "id": "option-laptop",
-                                "title": "Laptop"
-                            }
+                            type: "reply",
+                            reply: {
+                                id: "option-laptop",
+                                title: "Laptop",
+                            },
                         },
                         {
-                            "type": "reply",
-                            "reply": {
-                                "id": "option-computadora",
-                                "title": "Computadora"
-                            }
-                        }
-                    ]
-                }
-            }
+                            type: "reply",
+                            reply: {
+                                id: "option-computadora",
+                                title: "Computadora",
+                            },
+                        },
+                    ],
+                },
+            },
         });
         return data;
     }
     MessageLocation(number) {
         const data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "to": `whatsapp:${number}`,
-            "type": "location",
-            "location": {
-                "latitude": "5.559455106648253 ",
-                "longitude": "-73.34499717963602",
-                "name": "Viva tunja",
-                "address": "Av Universitaria, Tunja, Boyacá"
-            }
+            messaging_product: "whatsapp",
+            to: `whatsapp:${number}`,
+            type: "location",
+            location: {
+                latitude: "5.559455106648253 ",
+                longitude: "-73.34499717963602",
+                name: "Viva tunja",
+                address: "Av Universitaria, Tunja, Boyacá",
+            },
         });
         return data;
     }

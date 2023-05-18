@@ -66,7 +66,7 @@ class DaosWhatsApp{
                 var text = GetTextUser(message);
 
                 
-                if (text != "hols") {
+                if (text != "") {
                     myConsole.log(text);
                     myConsole.log(number);
                     await processMessage.ProcessMessage(text,number);
