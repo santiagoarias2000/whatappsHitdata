@@ -11,21 +11,50 @@ class WhatsappModels {
     });
     return data;
   }
-  //Buenas tardes, buenos dias, hola
-  public MessageImageHola(number: number) {
+  public MessageContacto( number: any) {
     const data = JSON.stringify({
       messaging_product: "whatsapp",
       to: `whatsapp:${number}`,
-      type: "image",
-      image: {
-        link: "https://hitdatasoluciones.com/images/isotipo.png",
-        caption: "Hola desde HitData",
-      },
+      "type": "contacts",
+      "contacts": [
+        {
+          "addresses": [
+            {
+              "street": "<ADDRESS_STREET>",
+              "city": "<ADDRESS_CITY>",
+              "state": "<ADDRESS_STATE>",
+              "zip": "<ADDRESS_ZIP>",
+              "country": "<ADDRESS_COUNTRY>",
+              "country_code": "<ADDRESS_COUNTRY_CODE>",
+              "type": "<HOME|WORK>"
+            }
+          ],
+          "emails": [
+            {
+              "email": "hitdatasoluciones@gmail.com",
+              "type": "hit"
+            }
+          ],  
+          "phones": [
+            {
+              "phone": "3114546376",
+              "wa_id": "<CONTACT_WA_ID>",
+              "type": "hit"
+            }
+          ],
+          "urls": [
+            {
+              "url": "https://www.hitdatasoluciones.com",
+              "type": "hit"
+            }
+          ]
+        }
+      ]
     });
     return data;
   }
-  //Buenas noches, buenas tardes, Muchas gracias
-  public MessageImageDespedida(number: number) {
+  //Buenas tardes, buenos dias, hola
+  public MessageImageHola(number: number) {
     const data = JSON.stringify({
       messaging_product: "whatsapp",
       to: `whatsapp:${number}`,
@@ -35,12 +64,11 @@ class WhatsappModels {
         header: {
           type: "image",
           image: {
-            link: "https://hitdatasoluciones.com/images/isotipo.png"
-            
+            link: "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/mente%20del%20consumidor_logo_hitadata.jpg"
           },
         },
         body: {
-          text:"Gracias por contactarnos",
+          text: "Bienvenidos al siguiente nivel 😎" + number,
         },
         action: {
           buttons: [
@@ -48,18 +76,32 @@ class WhatsappModels {
               type: "reply",
               reply: {
                 id: "001",
-                title: "Salir",
+                title: "Contactanos",
               },
             },
             {
               type: "reply",
               reply: {
                 id: "002",
-                title: "Preguntar",
+                title: "Nuestros Servicios",
               },
             },
           ],
         },
+      },
+
+    });
+    return data;
+  }
+  //Buenas noches, buenas tardes, Muchas gracias
+  public MessageImageDespedida(number: number) {
+    const data = JSON.stringify({
+      messaging_product: "whatsapp",
+      to: `whatsapp:${number}`,
+      type: "image",
+      image: {
+        link: "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/emociones_hitdata(1).jpg",
+        caption: 'Hasta Luego ' + `${number}` + ' desde HitData ✌️✌️ ',
       },
     });
     return data;
@@ -74,44 +116,64 @@ class WhatsappModels {
         type: "list",
         header: {
           type: "text",
-          text: "Nuestros Servicios son",
+          text: "Hit Data",
         },
         body: {
-          text: "Agencia de Marketing y Publicidad",
+          text: "Estos son nuestros servicios",
         },
         footer: {
-          text: "Selecciona una de las opciones para poder atenderte",
+          text: "Agencia de Marketing y Publicidad",
         },
         action: {
           button: "Ver opciones",
           sections: [
             {
-              title: "Compra y vende productos",
+              title: "Nuestros Servicios",
               rows: [
                 {
-                  id: "main-comprar-header",
-                  title: "Comprar",
-                  description: "Compra los mejores productos para tu hogar",
+                  id: "main-plan-1",
+                  title: "Plan 1 🧑‍💻",
+                  description: "15 Publicaciones mensuales",
                 },
                 {
-                  id: "main-comprar",
-                  title: "Vender",
-                  description: "Vende tus productos",
+                  id: "main-plan-2",
+                  title: "Plan 2 💡",
+                  description: "20 Publicaciones mensuales",
+                },
+                {
+                  id: "main-plan-3",
+                  title: "Plan 3 📹",
+                  description: "12 Publicaciones mensuales",
+                },
+                {
+                  id: "main-plan-4",
+                  title: "Plan 4 🖌️",
+                  description: "7 Piezas gráficas",
+                },
+                {
+                  id: "main-plan-5",
+                  title: "Plan 5 📷",
+                  description: "12 Publicaciones mensuales",
                 },
               ],
             },
             {
-              title: "Centro de atencion",
+              title: "Centro de atencion ",
               rows: [
                 {
                   id: "main-agencia",
-                  title: "Agencia",
+                  title: "Contacto 📱",
                   description: "Puedes visitar nuestra agencia.",
                 },
                 {
                   id: "main-contacto",
-                  title: "Centro de contacto",
-                  description: "Te atenderá uno de nuestro agentes",
+                  title: "Conócenos 💻",
+                  description: "Visita nuestra página web",
+                },
+                {
+                  id: "main-location",
+                  title: "HitData 📍",
+                  description: "Estamos ubicados en el Boulevard",
                 },
               ],
             },
@@ -122,35 +184,193 @@ class WhatsappModels {
     return data;
   }
 
-  public MessageButtons(number: number) {
+  public MessagePlan1(number: number) {
     const data = JSON.stringify({
       messaging_product: "whatsapp",
       to: `whatsapp:${number}`,
       type: "interactive",
-      interactive: {
-        type: "button",
-        body: {
-          text: "¿Selecciona uno de los productos?",
+      "interactive": {
+        "type": "button",
+        "header": {
+          "type": "image",
+          "image": {
+            "link": "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/PLAN_1_HIT%20DATA.jpg"
+          }
         },
-        action: {
-          buttons: [
+        "body": {
+          "text": "Te gustaria ver otro plan?"
+        },
+        "action": {
+          "buttons": [
             {
-              type: "reply",
-              reply: {
-                id: "option-laptop",
-                title: "Laptop",
-              },
+              "type": "reply",
+              "reply": {
+                "id": "001",
+                "title": "Si ✅",
+              }
             },
             {
-              type: "reply",
-              reply: {
-                id: "option-computadora",
-                title: "Computadora",
-              },
-            },
-          ],
+              "type": "reply",
+              "reply": {
+                "id": "002",
+                "title": "No"
+              }
+            }
+          ]
+        }
+      }
+    });
+    return data;
+  }
+  public MessagePlan2(number: number) {
+    const data = JSON.stringify({
+      messaging_product: "whatsapp",
+      to: `whatsapp:${number}`,
+      type: "interactive",
+      "interactive": {
+        "type": "button",
+        "header": {
+          "type": "image",
+          "image": {
+            "link": "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/PLAN_1_HIT%20DATA.jpg"
+          }
         },
-      },
+        "body": {
+          "text": "Te gustaria ver otro plan?"
+        },
+        "action": {
+          "buttons": [
+            {
+              "type": "reply",
+              "reply": {
+                "id": "001",
+                "title": "Si ✅ ",
+              }
+            },
+            {
+              "type": "reply",
+              "reply": {
+                "id": "002",
+                "title": "No"
+              }
+            }
+          ]
+        }
+      }
+    });
+    return data;
+  }
+  public MessagePlan3(number: number) {
+    const data = JSON.stringify({
+      messaging_product: "whatsapp",
+      to: `whatsapp:${number}`,
+      type: "interactive",
+      "interactive": {
+        "type": "button",
+        "header": {
+          "type": "image",
+          "image": {
+            "link": "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/PLAN_3_HIT%20DATA.jpg"
+          }
+        },
+        "body": {
+          "text": "Te gustaria ver otro plan?"
+        },
+        "action": {
+          "buttons": [
+            {
+              "type": "reply",
+              "reply": {
+                "id": "001",
+                "title": "Si ✅ ",
+              }
+            },
+            {
+              "type": "reply",
+              "reply": {
+                "id": "002",
+                "title": "No"
+              }
+            }
+          ]
+        }
+      }
+    });
+    return data;
+  }
+  public MessagePlan4(number: number) {
+    const data = JSON.stringify({
+      messaging_product: "whatsapp",
+      to: `whatsapp:${number}`,
+      type: "interactive",
+      "interactive": {
+        "type": "button",
+        "header": {
+          "type": "image",
+          "image": {
+            "link": "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/PLAN_4_HIT%20DATA.jpg"
+          }
+        },
+        "body": {
+          "text": "Te gustaria ver otro plan?"
+        },
+        "action": {
+          "buttons": [
+            {
+              "type": "reply",
+              "reply": {
+                "id": "001",
+                "title": "Si ✅ ",
+              }
+            },
+            {
+              "type": "reply",
+              "reply": {
+                "id": "002",
+                "title": "No"
+              }
+            }
+          ]
+        }
+      }
+    });
+    return data;
+  }
+  public MessagePlan5(number: number) {
+    const data = JSON.stringify({
+      messaging_product: "whatsapp",
+      to: `whatsapp:${number}`,
+      type: "interactive",
+      "interactive": {
+        "type": "button",
+        "header": {
+          "type": "image",
+          "image": {
+            "link": "https://github.com/santiagoarias2000/whatappsHitdata/blob/main/src/assets/PLAN_5_HIT%20DATA%20.jpg"
+          }
+        },
+        "body": {
+          "text": "Te gustaria ver otro plan?"
+        },
+        "action": {
+          "buttons": [
+            {
+              "type": "reply",
+              "reply": {
+                "id": "001",
+                "title": "Si ✅ ",
+              }
+            },
+            {
+              "type": "reply",
+              "reply": {
+                "id": "002",
+                "title": "No"
+              }
+            }
+          ]
+        }
+      }
     });
     return data;
   }
@@ -161,10 +381,10 @@ class WhatsappModels {
       to: `whatsapp:${number}`,
       type: "location",
       location: {
-        latitude: "5.559455106648253 ",
-        longitude: "-73.34499717963602",
-        name: "Viva tunja",
-        address: "Av Universitaria, Tunja, Boyacá",
+        latitude: "5.5441980877891694",
+        longitude: "-73.35154394963322",
+        name: "Hit data Agencia de marketing y publicidad",
+        address: "Centro Comercial Boulevard, Cl. 32 # 3-76, Tunja, Boyacá",
       },
     });
     return data;

@@ -23,35 +23,49 @@ class ProcessMessage {
                 //Saludar
                 var model = WhatsAppModel_1.default.MessageImageHola(number);
                 models.push(model);
-                //
-                var model2 = WhatsAppModel_1.default.MessageList(number);
-                models.push(model2);
             }
             else if (textUser.includes("gracias")) {
                 var model = WhatsAppModel_1.default.MessageText("Con gusto :)", number);
                 models.push(model);
             }
-            else if (textUser.includes("adios") ||
-                textUser.includes("adiós") ||
-                textUser.includes("bye") ||
-                textUser.includes("me voy")) {
+            else if (textUser.includes("adios") || textUser.includes("adiós") || textUser.includes("bye") || textUser.includes("me voy") || textUser.includes("no")) {
                 var model = WhatsAppModel_1.default.MessageImageDespedida(number);
                 models.push(model);
             }
-            else if (textUser.includes("vender")) {
-                var model = WhatsAppModel_1.default.MessageText("Registrate en el siguiente formulario: https://docs.google.com/forms/d/e/1FAIpQLSeV2-BAld86gZy0aq_ZMRXU9FJnZBBw5yyWxVB4KlfXJmXadA/viewform", number);
+            else if (textUser.includes("conócenos")) {
+                var model = WhatsAppModel_1.default.MessageText("Visita nuestra página: https://www.hitdatasoluciones.com", number);
                 models.push(model);
             }
-            else if (textUser.includes("agencia")) {
+            else if (textUser.includes("hitdata")) {
                 var model = WhatsAppModel_1.default.MessageLocation(number);
                 models.push(model);
             }
             else if (textUser.includes("contacto")) {
-                var model = WhatsAppModel_1.default.MessageText("*Centro de contacto:* \n3114546376", number);
+                var model = WhatsAppModel_1.default.MessageText("*Centro de contacto:* \n3127399230", number);
                 models.push(model);
             }
-            else if (textUser.includes("preguntar")) {
+            else if (textUser.includes("servicios") || textUser.includes("si")) {
                 var model2 = WhatsAppModel_1.default.MessageList(number);
+                models.push(model2);
+            }
+            else if (textUser.includes("plan 1")) {
+                var model2 = WhatsAppModel_1.default.MessagePlan1(number);
+                models.push(model2);
+            }
+            else if (textUser.includes("plan 2")) {
+                var model2 = WhatsAppModel_1.default.MessagePlan2(number);
+                models.push(model2);
+            }
+            else if (textUser.includes("plan 3")) {
+                var model2 = WhatsAppModel_1.default.MessagePlan3(number);
+                models.push(model2);
+            }
+            else if (textUser.includes("plan 4")) {
+                var model2 = WhatsAppModel_1.default.MessagePlan4(number);
+                models.push(model2);
+            }
+            else if (textUser.includes("plan 5")) {
+                var model2 = WhatsAppModel_1.default.MessagePlan5(number);
                 models.push(model2);
             }
             else {
