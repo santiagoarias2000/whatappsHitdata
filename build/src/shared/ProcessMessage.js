@@ -12,6 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Info_1 = __importDefault(require("../repository/Info"));
+const Saludo_1 = __importDefault(require("../repository/Saludo"));
+const Servicio_1 = __importDefault(require("../repository/Servicio"));
 const WhatsAppService_1 = __importDefault(require("../services/WhatsAppService"));
 const WhatsAppModel_1 = __importDefault(require("./WhatsAppModel"));
 class ProcessMessage {
@@ -19,57 +22,47 @@ class ProcessMessage {
         return __awaiter(this, void 0, void 0, function* () {
             textUser = textUser.toLowerCase();
             var models = [];
-            if (textUser.includes("hola") || textUser.includes("buenos")) {
-                //Saludar
+            //#region sin chat gpt
+            if (Saludo_1.default.Bienvenida(textUser)) {
                 var model = WhatsAppModel_1.default.MessageImageHola(number);
                 models.push(model);
             }
-            else if (textUser.includes("gracias")) {
-                var model = WhatsAppModel_1.default.MessageText("Con gusto :)", number);
-                models.push(model);
-            }
-            else if (textUser.includes("adios") || textUser.includes("adiós") || textUser.includes("bye") || textUser.includes("me voy") || textUser.includes("no")) {
+            else if (Saludo_1.default.Despedida(textUser)) {
                 var model = WhatsAppModel_1.default.MessageImageDespedida(number);
                 models.push(model);
             }
-            else if (textUser.includes("conócenos")) {
-                var model = WhatsAppModel_1.default.MessageText("Visita nuestra página: https://www.hitdatasoluciones.com", number);
+            else if (Saludo_1.default.Gracias(textUser)) {
+                var model = WhatsAppModel_1.default.MessageText("Con Gusto desde HitData ✌️", number);
+                var model2 = WhatsAppModel_1.default.MessageText("No olvides visita nuestra página 💻: https://www.hitdatasoluciones.com", number);
                 models.push(model);
+                models.push(model2);
             }
-            else if (textUser.includes("hitdata")) {
+            else if (Info_1.default.Ubicacion(textUser)) {
                 var model = WhatsAppModel_1.default.MessageLocation(number);
                 models.push(model);
             }
-            else if (textUser.includes("contacto")) {
-                var model = WhatsAppModel_1.default.MessageText("*Centro de contacto:* \n3127399230", number);
+            else if (Info_1.default.Contacto(textUser)) {
+                var model = WhatsAppModel_1.default.MessageContactoText(number);
                 models.push(model);
             }
-            else if (textUser.includes("servicios") || textUser.includes("si")) {
+            else if (Info_1.default.Agendar(textUser)) {
+                var model2 = WhatsAppModel_1.default.MessageText("Agenda tu cita 📆: https://calendar.app.google/8nfxcDz6z7qRPpdw8", number);
+                models.push(model2);
+            }
+            else if (Servicio_1.default.Servicios(textUser)) {
                 var model2 = WhatsAppModel_1.default.MessageList(number);
                 models.push(model2);
             }
-            else if (textUser.includes("plan 1")) {
-                var model2 = WhatsAppModel_1.default.MessagePlan1(number);
-                models.push(model2);
+            else if (Servicio_1.default.Planes(textUser)) {
+                const plan = Servicio_1.default.ListDePlanes(textUser, number);
+                models.push(plan);
             }
-            else if (textUser.includes("plan 2")) {
-                var model2 = WhatsAppModel_1.default.MessagePlan2(number);
-                models.push(model2);
-            }
-            else if (textUser.includes("plan 3")) {
-                var model2 = WhatsAppModel_1.default.MessagePlan3(number);
-                models.push(model2);
-            }
-            else if (textUser.includes("plan 4")) {
-                var model2 = WhatsAppModel_1.default.MessagePlan4(number);
-                models.push(model2);
-            }
-            else if (textUser.includes("plan 5")) {
-                var model2 = WhatsAppModel_1.default.MessagePlan5(number);
-                models.push(model2);
+            else if (Servicio_1.default.SubPlanes(textUser)) {
+                const plan = Servicio_1.default.SubPlan(textUser, number);
+                models.push(plan);
             }
             else {
-                var model = WhatsAppModel_1.default.MessageText("No te entiendo", number);
+                var model = WhatsAppModel_1.default.MessageText("Perdona no te entendimos 🤔", number);
                 models.push(model);
             }
             models.forEach((model) => {

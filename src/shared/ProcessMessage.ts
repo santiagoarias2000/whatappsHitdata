@@ -1,65 +1,56 @@
+import info from "../repository/Info";
+import saludo from "../repository/Saludo";
+import servicio from "../repository/Servicio";
 import whatsAppService from "../services/WhatsAppService";
 import whatsAppModel from "./WhatsAppModel";
 class ProcessMessage {
   public async ProcessMessage(textUser: any, number: any) {
     textUser = textUser.toLowerCase();
-
-    var models: any = [];
-
-    if (textUser.includes("hola") || textUser.includes("buenos")) {
-      //Saludar
+    var models = [];
+    
+    //#region sin chat gpt
+    if (saludo.Bienvenida(textUser)) {
       var model = whatsAppModel.MessageImageHola(number);
       models.push(model);
-    } else if (textUser.includes("gracias")) {
-      var model = whatsAppModel.MessageText("Con gusto :)", number);
-      models.push(model);
-    } else if (
-      textUser.includes("adios") || textUser.includes("adiós") || textUser.includes("bye") || textUser.includes("me voy") || textUser.includes("no")
-    ) {
+    } else if (saludo.Despedida(textUser)) {
       var model = whatsAppModel.MessageImageDespedida(number);
       models.push(model);
-    } else if (textUser.includes("conócenos")) {
-      var model = whatsAppModel.MessageText(
-        "Visita nuestra página: https://www.hitdatasoluciones.com",
-        number
-      );
+    } else if (saludo.Gracias(textUser)) {
+      var model = whatsAppModel.MessageText("Con Gusto desde HitData ✌️", number);
+      var model2 = whatsAppModel.MessageText("No olvides visita nuestra página 💻: https://www.hitdatasoluciones.com", number);
       models.push(model);
-    } else if (textUser.includes("hitdata")) {
+      models.push(model2);
+    } else if (info.Ubicacion(textUser)) {
       var model = whatsAppModel.MessageLocation(number);
       models.push(model);
-    } else if (textUser.includes("contacto") ) {
-      var model = whatsAppModel.MessageText(
-        "*Centro de contacto:* \n3127399230",
-        number
-      );
+    } else if (info.Contacto(textUser)) {
+      var model = whatsAppModel.MessageContactoText( number );
       models.push(model);
-    } else if (textUser.includes("servicios") || textUser.includes("si")) {
+    } else if (info.Agendar(textUser)) {
+      var model2 = whatsAppModel.MessageText("Agenda tu cita 📆: https://calendar.app.google/8nfxcDz6z7qRPpdw8", number);
+      models.push(model2);
+    } else if (servicio.Servicios(textUser)) {
       var model2 = whatsAppModel.MessageList(number);
       models.push(model2);
-    }else if (textUser.includes("plan 1")) {
-        var model2 = whatsAppModel.MessagePlan1(number);
-        models.push(model2);
-    }else if (textUser.includes("plan 2")) {
-        var model2 = whatsAppModel.MessagePlan2(number);
-        models.push(model2);
-    }else if (textUser.includes("plan 3")) {
-        var model2 = whatsAppModel.MessagePlan3(number);
-        models.push(model2);
-    }else if (textUser.includes("plan 4")) {
-        var model2 = whatsAppModel.MessagePlan4(number);
-        models.push(model2);
-    }else if (textUser.includes("plan 5")) {
-        var model2 = whatsAppModel.MessagePlan5(number);
-        models.push(model2);
+    } else if (servicio.Planes(textUser)){
+      const plan = servicio.ListDePlanes(textUser,number);
+      models.push(plan);
+    } else if (servicio.SubPlanes(textUser)){
+      const plan = servicio.SubPlan(textUser,number);
+      models.push(plan);
     } else {
-      var model = whatsAppModel.MessageText("No te entiendo", number);
+      var model = whatsAppModel.MessageText(
+        "Perdona no te entendimos 🤔",
+        number);
       models.push(model);
     }
-
-    models.forEach((model: any) => {
+    models.forEach((model) => {
       whatsAppService.SendMessageWhatsApp(model);
     });
+
+
   }
+
 }
 const processMessage = new ProcessMessage();
 export default processMessage;

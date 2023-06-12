@@ -5,7 +5,7 @@ class WhatsAppService {
 
         const options = {
             host: "graph.facebook.com",
-            path: "/v16.0/103830672715211/messages",
+            path: "/v17.0/103830672715211/messages",
             method: "POST",
             body: data,
             headers: {
