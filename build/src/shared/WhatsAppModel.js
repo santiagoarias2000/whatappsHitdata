@@ -28,7 +28,7 @@ class WhatsappModels {
                 header: {
                     type: "image",
                     image: {
-                        link: "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/mente%20del%20consumidor_logo_hitadata.jpg"
+                        link: "https://github.com/santiagoarias2000/whatappsHitdata/blob/main/src/assets/hola.jpeg?raw=true"
                     },
                 },
                 body: {
@@ -73,7 +73,7 @@ class WhatsappModels {
             image: {
                 link: "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/emociones_hitdata(1).jpg",
                 //Hasta luego numerodetelefono te hablo tu asistente virtual BlueBot
-                caption: 'Hasta Luego ' + `${number}` + ' desde HitData ✌️✌️ ',
+                caption: 'Hasta Luego ' + `${number}` + ' desde HitData ✌️✌️, hablaste con tu asistente virtual BlueBot',
             },
         });
         return data;

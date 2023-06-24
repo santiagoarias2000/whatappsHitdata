@@ -14,7 +14,7 @@ class Info {
     }
     ;
     Ubicacion(word) {
-        const dictionary = ['conócenos', 'ubicados', 'ubicado', 'situados', 'local', 'boulevard', 'hitdata',];
+        const dictionary = ['conócenos', 'ubicados', 'ubicado', 'situados', 'local', 'boulevard', 'hitdata', 'TEAM', 'team',];
         const containsMatch = dictionary.some((dict) => word.includes(dict));
         return containsMatch;
     }

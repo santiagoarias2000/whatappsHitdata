@@ -13,7 +13,7 @@ class Info {
 
     };
     public Ubicacion(word: string): boolean {
-        const dictionary: (string)[] = ['conócenos', 'ubicados', 'ubicado', 'situados', 'local', 'boulevard', 'hitdata',];
+        const dictionary: (string)[] = ['conócenos', 'ubicados', 'ubicado', 'situados', 'local', 'boulevard', 'hitdata','TEAM', 'team',];
         const containsMatch: boolean = dictionary.some((dict: string) => word.includes(dict));
         return containsMatch;
 
