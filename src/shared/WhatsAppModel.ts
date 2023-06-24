@@ -1,3 +1,12 @@
+//nombre del chat: 
+
+//apartado para bluebot donde diga soy blue bot y soy un hit aparece el moraco
+
+
+//un por que no para cuando contesten mal
+//te responderemos..... 
+
+
 class WhatsappModels {
   public MessageText(textResponse: string | any, number: any) {
     const data = JSON.stringify({
@@ -27,7 +36,8 @@ class WhatsappModels {
           },
         },
         body: {
-          text: "Bienvenido al siguiente nivel, somos Hit Data Agencia de Marketing y Publicidad. 😎" + number,
+          //Hola bienvenido a Hit Data, soy bluebot tu asistente virtual, te inivito a conocer nuestros servicios, o si te quieres contactar con nuestro equipo puedes escrbir en cualquier momento TEAM (sirve para conocer nuestro horario de atencion)
+          text: "Hola bienvenido a Hit Data, soy BotBlue tu asistente virtual, te inivito a conocer nuestros servicios, o si te quieres contactar con nuestro equipo puedes escrbir en cualquier momento ''TEAM''. 😎" + number,
         },
         action: {
           buttons: [
@@ -35,15 +45,22 @@ class WhatsappModels {
               type: "reply",
               reply: {
                 id: "001",
-                title: "Contáctenos",
+                title: "Nuestros Servicios",
               },
             },
             {
               type: "reply",
               reply: {
                 id: "002",
-                title: "Nuestros Servicios",
-              },
+                title: "Portafolio",
+              }, 
+            },
+                        {
+              type: "reply",
+              reply: {
+                id: "003",
+                title: "Agendar Asesoría",
+              }
             },
           ],
         },
@@ -60,6 +77,7 @@ class WhatsappModels {
       type: "image",
       image: {
         link: "https://raw.githubusercontent.com/santiagoarias2000/whatappsHitdata/main/src/assets/emociones_hitdata(1).jpg",
+        //Hasta luego numerodetelefono te hablo tu asistente virtual BlueBot
         caption: 'Hasta Luego ' + `${number}` + ' desde HitData ✌️✌️ ',
       },
     });
@@ -117,7 +135,7 @@ class WhatsappModels {
   }
 
 
-
+//mira como se cambia para que sea una lista completa, listado en 1, 2, 3, 4
   public MessageList(number: number) {
     const data = JSON.stringify({
       "messaging_product": "whatsapp",
@@ -143,32 +161,32 @@ class WhatsappModels {
               rows: [
                 {
                   id: "main-plan-1",
-                  title: "Plan 1",
+                  title: "Gestión Redes sociales🤳",
                   description: "Gestión Redes sociales🤳",
                 },
                 {
                   id: "main-plan-2",
-                  title: "Plan 2",
+                  title: "Desarrollo de sitio👨‍💻",
                   description: "Desarrollo de sitio👨‍💻",
                 },
                 {
                   id: "main-plan-3",
-                  title: "Plan 3",
+                  title: "Desarrollo de software 💻",
                   description: "Desarrollo de software 💻",
                 },
                 {
                   id: "main-plan-4",
-                  title: "Plan 4",
+                  title: "Diseño gráfico 🖌️",
                   description: "Diseño gráfico 🖌️",
                 },
                 {
                   id: "main-plan-5",
-                  title: "Plan 5",
+                  title: "Producción audiovisual 📷",
                   description: "Producción audiovisual 📷",
                 },
                 {
                   id: "main-plan-6",
-                  title: "Plan 6",
+                  title: "Asesoría personalizada 🫱🏻‍🫲🏼",
                   description: "Asesoría personalizada 🫱🏻‍🫲🏼",
                 },
 

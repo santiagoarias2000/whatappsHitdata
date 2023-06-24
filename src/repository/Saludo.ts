@@ -1,7 +1,7 @@
 class Saludo {
 
     public Bienvenida(word: string): boolean {
-        const dictionary: string[] = ['hola', 'buenos', 'dias', 'preguntar','.',];
+        const dictionary: string[] = ['hola', 'buenos', 'dias', 'preguntar','.','info'];
         const containsMatch: boolean = dictionary.some((dict: string) => word.includes(dict));
         return containsMatch;
 
